@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "SYNTHETIC": true,
+    "type": "extended_run",
+    "scenarios": [
+      "idle_dormant",
+      "ambient_alone",
+      "active_conversation",
+      "multiparty_highenergy",
+      "active_conversation",
+      "ambient_alone"
+    ]
+  },
+  "transitions": [
+    {
+      "t": 32.0,
+      "scenario": "ambient_alone",
+      "from": "L0",
+      "to": "L1",
+      "cause": "L0 exit: upright+worn+HR quality ok",
+      "config": "Ambient"
+    },
+    {
+      "t": 32.5,
+      "scenario": "ambient_alone",
+      "from": "L1",
+      "to": "L2",
+      "cause": "time-of-day likelihood (8am-10pm)",
+      "config": "Passive"
+    },
+    {
+      "t": 76.5,
+      "scenario": "active_conversation",
+      "from": "L2",
+      "to": "L3",
+      "cause": "heart rate >15% above baseline",
+      "config": "Active"
+    },
+    {
+      "t": 104.5,
+      "scenario": "active_conversation",
+      "from": "L3",
+      "to": "L4",
+      "cause": "L4: speech>40% + multi-speaker + arousal (all in 60s window)",
+      "config": "Engaged"
+    },
+    {
+      "t": 133.5,
+      "scenario": "multiparty_highenergy",
+      "from": "L4",
+      "to": "L5",
+      "cause": "L5: 3+ signals converge (HR 30%+ or HRV collapse, >2 speakers overlapping, stress above p90)",
+      "config": "Peak"
+    },
+    {
+      "t": 267.0,
+      "scenario": "ambient_alone",
+      "from": "L5",
+      "to": "L4",
+      "cause": "L5->L4: hysteresis 45s with <= 1 conditions",
+      "config": "Engaged"
+    },
+    {
+      "t": 327.5,
+      "scenario": "ambient_alone",
+      "from": "L4",
+      "to": "L3",
+      "cause": "L4->L3: hysteresis 60s with <= 0 conditions",
+      "config": "Active"
+    },
+    {
+      "t": 418.0,
+      "scenario": "ambient_alone",
+      "from": "L3",
+      "to": "L2",
+      "cause": "L3->L2: hysteresis 90s with <= 0 conditions",
+      "config": "Passive"
+    }
+  ],
+  "worn_events": [],
+  "double_taps": [
+    {
+      "t": 161.65,
+      "window": [
+        146.65,
+        176.65
+      ]
+    }
+  ],
+  "unavailable_events": [
+    {
+      "t": 90.0,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 91.05,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 92.1,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 93.15,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 94.2,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 95.25,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 96.3,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 97.35,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 98.4,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    },
+    {
+      "t": 99.45,
+      "sensor": "imu",
+      "reason": "I2C read timed out"
+    }
+  ],
+  "summary": {
+    "total_samples": 11400,
+    "duration_s": 570.0,
+    "total_transitions": 8,
+    "double_taps_detected": 1,
+    "final_level": "L2",
+    "annotation_windows": 1,
+    "rule3_injection": {
+      "sensor": "imu",
+      "window_s": "90.0-100.0",
+      "unavailable_events_logged": 10,
+      "system_crashed": false,
+      "fake_zeros_produced": false
+    }
+  }
+}
