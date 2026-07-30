@@ -13,7 +13,7 @@ echo "════════ HW-2: Security & Boot (Task 1 foundation) ══�
 echo "════════ HW-3: Connectivity & Cloud (Task 1 foundation) ════════"
 (cd hw-track-3-connectivity && "$PY" -m pytest tests/ -q)
 
-echo "════════ Team B: Output & Timing Modules (Task 3, Days 1-2 — LED + OLED) ════════"
+echo "════════ Team B: Output & Timing Modules (Task 3, Days 1-3 — LED + OLED + Voice/NTP) ════════"
 (cd output-timing-modules && "$PY" -m pytest tests/ -q)
 
 echo "════════ Day 5: Cross-Track Integration ════════"
@@ -23,4 +23,4 @@ echo "════════ End-to-End Pipeline ════════"
 (cd hw-track-3-connectivity && "$PY" e2e_pipeline.py | tail -4)
 
 echo ""
-echo "ALL TRACKS GREEN: 74 + 119 + 39 + 30 + 21 + 28 + 10 = 321 tests"
+echo "ALL TRACKS GREEN: 74 + 119 + 39 + 30 + 21 + 28 + 7 + 20 + 10 = 348 tests"
