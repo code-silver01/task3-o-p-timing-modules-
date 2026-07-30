@@ -117,6 +117,13 @@ class OLEDDisplayManager:
         read when computing privacy_pixel_on."""
         self._watchface = name
 
+    def is_requested(self, state: DisplayState) -> bool:
+        """Whether `state` is currently in the active set — independent of
+        whether the screen happens to be awake right now. Added for Day 4's
+        wiring tests, which need to confirm the RIGHT state was requested
+        without needing to wake the screen just to inspect it."""
+        return state in self._active
+
     # ---- internal ----
 
     def _current_priority_state(self) -> DisplayState:
